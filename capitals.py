@@ -1,4 +1,4 @@
-# an array of state dictionaries
+
 states = [
 {
     "name": "Alabama",
@@ -151,3 +151,35 @@ states = [
     "name": "Wyoming",
     "capital": "Cheyenne"
 }]
+
+import random
+
+print("Welcome to Name the State Capital Game")
+
+
+def game():
+    for k in range(len(states)):
+        states[k]['incorrect'] = 0
+        states[k]['correct'] = 0
+    def play():
+        random.shuffle(states)
+        correct_score = 0
+        incorrect_score = 0
+        for i in range(0, len(states)): 
+            answer = input('What is the capital of ' + states[i]['name'] + '? ' )
+            if answer == states[i]['capital']:
+                print('Correct')
+                correct_score += 1
+                print('Your total Correct score is ' + str(correct_score))
+                print('Your total Incorrect score is ' + str(incorrect_score))
+            else:
+                print('Incorrect')
+                incorrect_score += 1
+                states[i]['incorrect'] += 1
+                print('Your total correct score is ' + str(correct_score))
+                print('Your total incorrect score is ' + str(incorrect_score))
+        again = input('Do you want to play again? ')
+        if again == 'Yes' or again == 'yes':
+            play()
+    play()       
+game()
